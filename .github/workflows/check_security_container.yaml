@@ -27,3 +27,4 @@ jobs:
         uses: crazy-max/ghaction-container-scan@v2
         with:
           image: 200984112386.dkr.ecr.us-east-1.amazonaws.com/cesar-school:latest
+          severity_threshold: MEDIUM
