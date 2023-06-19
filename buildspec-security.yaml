@@ -1,0 +1,7 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Checking images...
+      - aws ecr describe-image-scan-findings --repository-name cesar-school --image-id imageTag=latest --region us-east-1

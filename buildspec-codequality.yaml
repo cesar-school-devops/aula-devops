@@ -1,0 +1,18 @@
+
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+    commands:
+      - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
+      - unzip sonar-scanner-cli-4.6.2.2472-linux.zip
+      - export PATH=$PATH:./sonar-scanner-4.6.2.2472-linux/bin/
+  build:
+    commands:
+      - sonar-scanner -Dsonar.projectKey=NOVO-CESAR-ANALISES -Dsonar.sources=. -Dsonar.host.url=http://3.238.27.37:9000  -Dsonar.login=a06b95a51476b8032565f22b064f13c3dd53b710
+      - sleep 5
+      - curl -u admin:admin http://3.238.27.37:9000/api/qualitygates/project_status?projectKey=NOVO-CESAR-ANALISES > result.json
+      - cat result.json
+      #- if [ $(jq -r '.projectStatus.status' result.json) = ERROR ] ; then echo "ERROR_SONAR" ;fi
