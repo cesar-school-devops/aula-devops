@@ -2,7 +2,8 @@ import pytest
 import web
 
 def test_soma_file():
-    assert 1 == 1
+    data = "leo"
+    assert "leo" == data
 
 def test_route_default():
     data = web.index()
